@@ -26,194 +26,132 @@
         />
     </head>
     <body class="page-docs">
-        <header class="site-header">
-            <div class="container">
-                <nav
-                    class="site-nav"
-                    aria-label="main navigation"
-                >
-                    <div class="site-nav__wrapper">
-                        <button
-                            type="button"
-                            aria-label="Switch language to English"
-                            class="lang-switcher"
-                        >
-                            eng
-                        </button>
-                        <ul class="site-nav__list">
-                            <li class="site-nav__item">
-                                <a
-                                    href="#"
-                                    aria-current="page"
-                                    class="site-nav__link"
-                                >documentation</a><span> / </span>
-                            </li>
-                            <li class="site-nav__item"><a
-                                    href="clients.html"
-                                    class="site-nav__link"
-                                >who's using</a></li>
-                        </ul>
-                    </div>
+    <header class="site-header">
+      <div class="container">
+        <nav class="site-nav" aria-label="main navigation">
+          <div class="site-nav__wrapper">
+            <button type="button" aria-label="Switch language to English" class="lang-switcher">
+              eng
+            </button>
+            <ul class="site-nav__list">
+              <li class="site-nav__item">
+                <a href="index.html" aria-current="page" class="site-nav__link">documentation</a><span> / </span>
+              </li>
+              <li class="site-nav__item">
+                <a href="clients.html" class="site-nav__link">who's using</a>
+              </li>
+            </ul>
+          </div>
 
-                    <a
-                        href="."
-                        class="site-logo"
-                    ><img
-                            src="./assets/icons/logo.svg"
-                            alt="konstruct - logo of company"
-                        /></a>
-                </nav>
-            </div>
-        </header>
-        <main
-            id="main-content"
-            class="docs-layout container"
-        >
-            <aside class="docs-sidebar">
-                <nav class="docs-sidebar__nav">
-                    <ul class="docs-sidebar__list">
-                        <li class="docs-sidebar__item">
-                            <a
-                                href="#introduction"
-                                class="docs-sidebar__link"
-                            >introduction</a>
-                        </li>
-                        <li class="docs-sidebar__item">
-                            <a
-                                href="#core_components"
-                                class="docs-sidebar__link"
-                            >core components</a>
-                        </li>
-                        <li class="docs-sidebar__item">
-                            <a
-                                href="#react_fundamentals"
-                                class="docs-sidebar__link"
-                            >react fundamentals</a>
-                        </li>
-                        <li class="docs-sidebar__item">
-                            <a
-                                href="#handling_text_input"
-                                class="docs-sidebar__link"
-                            >handling text input</a>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-            <div class="docs-content">
-                <h1 class="sr-only">react native documentation</h1>
-                <section class="docs-section">
-                    <img
-                        src="./assets/icons/divider.svg"
-                        alt=""
-                        width="100"
-                        height="8"
-                        aria-hidden="true"
-                    />
-                    <h2
-                        class="docs-section__title"
-                        id="introduction"
-                    >Introduction<sup class="docs-section__chapter">Chapter 1</sup></h2>
-                    <p>
-                        Welcome to the very start of your React Native journey! If you're looking for
-                        environment setup instructions, they've moved to
-                        <span class="underline-text">their own section</span>. Continue reading for an
-                        introduction to the documentation, Native Components, React, and more!
-                    </p>
-                </section>
-                <section class="docs-section">
-                    <img
-                        src="./assets/icons/divider.svg"
-                        alt=""
-                        width="100"
-                        height="8"
-                        aria-hidden="true"
-                    />
+          <a href="." class="site-logo">
+            <!-- Added error fallbacks so missing assets display nicely in the sandbox -->
+            <img src="./assets/icons/logo.svg" onerror="this.onerror=null; this.src='https://placehold.co/238x54?text=Konstrukt'" alt="konstruct - logo of company" />
+          </a>
+        </nav>
+      </div>
+    </header>
 
-                    <h2
-                        class="docs-section__title"
-                        id="core_components"
-                    >core components<sup class="docs-section__chapter">Chapter 2</sup></h2>
+    <!-- Docs Page (Container Query Wrapper) -->
+    <main id="main-docs" class="container docs-wrapper">
+      <div class="docs-layout">
+        <aside class="docs-sidebar">
+          <nav class="docs-sidebar__nav">
+            <ul class="docs-sidebar__list">
+              <li class="docs-sidebar__item">
+                <a href="#introduction" class="docs-sidebar__link">introduction</a>
+              </li>
+              <li class="docs-sidebar__item">
+                <a href="#core_components" class="docs-sidebar__link">core components</a>
+              </li>
+              <li class="docs-sidebar__item">
+                <a href="#react_fundamentals" class="docs-sidebar__link">react fundamentals</a>
+              </li>
+              <li class="docs-sidebar__item">
+                <a href="#handling_text_input" class="docs-sidebar__link">handling text input</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
 
+        <div class="docs-content">
+          <h1 class="sr-only">react native documentation</h1>
+          
+          <section class="docs-section">
+            <img src="./assets/icons/divider.svg" onerror="this.onerror=null; this.src='https://placehold.co/100x8?text=--'" alt="" width="100" height="8" aria-hidden="true" />
+            <h2 class="docs-section__title" id="introduction">Introduction<sup class="docs-section__chapter">Chapter 1</sup></h2>
+            <p>
+              Welcome to the very start of your React Native journey! If you're looking for
+              environment setup instructions, they've moved to
+              <span class="underline-text">their own section</span>. Continue reading for an
+              introduction to the documentation, Native Components, React, and more!
+            </p>
+          </section>
 
-                    <p>
-                        React Native is an open source framework for building Android and iOS applications using
-                        React and the app platform’s native capabiles. With React Native, you use JavaScript to
-                        access your platform’s APIs as well as to describe the appearance and behavior of your
-                        UI using React components: <i class="italic-text">bundles of reusable, nestable code</i>. You can learn more
-                        about React in the next section. But first, let’s cover how components work in React
-                        Native.
-                    </p>
-                </section>
-                <section class="docs-section">
-                    <img
-                        src="./assets/icons/divider.svg"
-                        alt="divider"
-                        width="100"
-                        height="8"
-                        aria-hidden="true"
-                    />
+          <section class="docs-section">
+            <img src="./assets/icons/divider.svg" onerror="this.onerror=null; this.src='https://placehold.co/100x8?text=--'" alt="" width="100" height="8" aria-hidden="true" />
+            <h2 class="docs-section__title" id="core_components">core components<sup class="docs-section__chapter">Chapter 2</sup></h2>
+            <p>
+              React Native is an open source framework for building Android and iOS applications using
+              React and the app platform’s native capabiles. With React Native, you use JavaScript to
+              access your platform’s APIs as well as to describe the appearance and behavior of your
+              UI using React components: <i class="italic-text">bundles of reusable, nestable code</i>. You can learn more
+              about React in the next section. But first, let’s cover how components work in React
+              Native.
+            </p>
+          </section>
 
-                    <h2
-                        class="docs-section__title"
-                        id="react_fundamentals"
-                    >react fundamentals<sup class="docs-section__chapter">Chapter 3</sup></h2>
+          <section class="docs-section">
+            <img src="./assets/icons/divider.svg" onerror="this.onerror=null; this.src='https://placehold.co/100x8?text=--'" alt="divider" width="100" height="8" aria-hidden="true" />
+            <h2 class="docs-section__title" id="react_fundamentals">react fundamentals<sup class="docs-section__chapter">Chapter 3</sup></h2>
+            <p>
+              React Native runs on <span class="underline-text">React</span>, a popular open source
+              library for building user interfaces with JavaScript. To make the most of React Native,
+              it helps to understand React itself. This section can get you started or can serve as a
+              refresher course.
+            </p>
+            <p>We’re going to cover the core concepts behind React:</p>
+            <p>
+              <strong class="strong-concept">components</strong>. The rest of this introduction to React uses cats in its examples:
+              friendly, approachable creatures that need names and a cafe to work in.
+            </p>
+            <p>
+              <strong class="strong-concept">JSX</strong>. React and React Native use JSX, a syntax that lets you write elements inside
+              JavaScript like so:
+              <mark class="mark-text">&lt;Text&gt;Hello, I am your cat!&lt;/Text&gt;</mark>.
+            </p>
+            <p>
+              The React docs have
+              <span class="guide underline-text">a comprehensive guide to JSX</span> you can refer to
+              learn even more. Because JSX is JavaScript, you can use variables inside it. Here you
+              are declaring a <mark class="mark-text">name</mark> for the cat, name, and embedding it
+              with curly braces inside <mark class="mark-text"><code>&lt;Text&gt;</code></mark>
+            </p>
+            <p><strong class="strong-concept">props</strong>. Props is short for “properties”.</p>
+            <p>
+              <strong class="strong-concept">state</strong>. While you can think of props as arguments you use to configure how components
+              render, state is like a component’s personal data storage. State is useful for handling
+              data that changes over time or that comes from user interaction. State gives your
+              components memory!
+            </p>
+          </section>
 
-
-                    <p>
-                        React Native runs on <span class="underline-text">React</span>, a popular open source
-                        library for building user interfaces with JavaScript. To make the most of React Native,
-                        it helps to understand React itself. This section can get you started or can serve as a
-                        refresher course.
-                    </p>
-                    <p>We’re going to cover the core concepts behind React:</p>
-                    <p>
-                        <strong class="strong-concept">components</strong>. The rest of this introduction to React uses cats in its examples:
-                        friendly, approachable creatures that need names and a cafe to work in.
-                    </p>
-                    <p>
-                        <strong class="strong-concept">JSX</strong>. React and React Native use JSX, a syntax that lets you write elements inside
-                        JavaScript like so:
-                        <mark class="mark-text">&lt;Text&gt;Hello, I am your cat!&lt;/Text&gt;</mark>.
-                    </p>
-                    <p>
-                        The React docs have
-                        <span class="guide underline-text">a comprehensive guide to JSX</span> you can refer to
-                        learn even more. Because JSX is JavaScript, you can use variables inside it. Here you
-                        are declaring a <mark class="mark-text">name</mark> for the cat, name, and embedding it
-                        with curly braces inside <mark class="mark-text"><code>&lt;Text&gt;</code></mark>
-                    </p>
-                    <p><strong class="strong-concept">props</strong>. Props is short for “properties”.</p>
-                    <p>
-                        <strong class="strong-concept">state</strong>. While you can think of props as arguments you use to configure how components
-                        render, state is like a component’s personal data storage. State is useful for handling
-                        data that changes over time or that comes from user interaction. State gives your
-                        components memory!
-                    </p>
-                </section>
-                <section class="docs-section">
-                    <img
-                        src="./assets/icons/divider.svg"
-                        alt=""
-                        width="100"
-                        height="8"
-                        aria-hidden="true""/>
-            <h2 class="
-                        docs-section__title"
-                        id="handling_text_input"
-                    >handling text input<sup class="docs-section__chapter">Chapter 4</sup></h2>
-                    <p>
-                        TextInput is a Core Component that allows the user to enter text. It has an
-                        <i class="italic-text">onChangeText</i> prop that takes a function to be called every time the text changed,
-                        and an onSubmitEditing prop that takes a function to be called when the text is
-                        submitted.
-                    </p>
-                    <p>
-                        For example, let's say that as the user types, you're translating their words into a
-                        different language. In this new language, every single word is written the same way: 🍕.
-                        So the sentence "Hello there Bob" would be translated as "🍕 🍕".
-                    </p>
-                </section>
-            </div>
-        </main>
+          <section class="docs-section">
+            <img src="./assets/icons/divider.svg" onerror="this.onerror=null; this.src='https://placehold.co/100x8?text=--'" alt="" width="100" height="8" aria-hidden="true" />
+            <h2 class="docs-section__title" id="handling_text_input">handling text input<sup class="docs-section__chapter">Chapter 4</sup></h2>
+            <p>
+              TextInput is a Core Component that allows the user to enter text. It has an
+              <i class="italic-text">onChangeText</i> prop that takes a function to be called every time the text changed,
+              and an onSubmitEditing prop that takes a function to be called when the text is
+              submitted.
+            </p>
+            <p>
+              For example, let's say that as the user types, you're translating their words into a
+              different language. In this new language, every single word is written the same way: 🍕.
+              So the sentence "Hello there Bob" would be translated as "🍕 🍕".
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
     </body>
 </html>

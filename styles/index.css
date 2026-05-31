@@ -7,16 +7,18 @@
   --font-base: 'PT Sans', sans-serif;
   --font-heading: 'Francois One', sans-serif;
   --font-chapter: 'Farro', sans-serif;
-  --font-ui: 'Staatliches', sans-serif; /*nav-top links*/
-  --font-switch: 'Tourney', sans-serif; /*lang button*/
-  --font-display: 'Roboto', sans-serif; /*Who’s using*/
+  --font-ui: 'Staatliches', sans-serif;
+  --font-switch: 'Tourney', sans-serif;
+  --font-display: 'Roboto', sans-serif;
 
   --container-max-width: 1440px;
   --container-content-max-width: 785px;
-  --container-aside-max-width: 385px;
+  /* Using clamp for a fluid sidebar width */
+  --container-aside-max-width: clamp(240px, 25cqi, 385px);
 
-  --header-height: 5rem;
-  --sidebar-offset: 70px;
+  /* Fluid header and offset using clamp */
+  --header-height: clamp(4rem, 8vw, 5rem);
+  --sidebar-offset: clamp(30px, 5vw, 70px);
 }
 
 :where(*, *::before, *::after) {
@@ -69,12 +71,13 @@ html {
 body {
   position: relative;
   padding-block: 12px;
-  padding-inline: 12px;
+  padding-inline: clamp(12px, 3vw, 24px); 
   font-family: var(--font-base);
   font-weight: 400;
-  font-size: 28px;
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.75rem); /* ~16px to 28px */
   line-height: 1.7;
   color: #000;
+  background-color: var(--light-color);
 }
 
 body.page-docs::before {
@@ -84,11 +87,12 @@ body.page-docs::before {
   inset-inline-end: 0;
   inline-size: clamp(200px, 40vw, 760px);
   aspect-ratio: 1;
-  background: url('../assets/icons/bg-picture.svg') right top / contain no-repeat;
+  background: url('./assets/icons/bg-picture.svg') right top / contain no-repeat;
   z-index: -1;
   pointer-events: none;
 }
 
+/* Base layout wrappers for Container Queries */
 .container {
   inline-size: 100%;
   max-inline-size: var(--container-max-width);
@@ -96,12 +100,18 @@ body.page-docs::before {
   margin-inline: auto;
 }
 
+.docs-wrapper,
+.clients-wrapper {
+  /* Declaring elements as responsive containers */
+  container-type: inline-size;
+}
+
 .docs-sidebar__link,
 .docs-section__title,
 .clients-title {
   font-family: var(--font-heading);
   font-weight: 400;
-  font-size: 36px;
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem); /* ~24px to 36px */
   line-height: 1.33;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -115,18 +125,14 @@ body.page-docs::before {
   text-transform: none;
 }
 
-.guide {
+.guide,
+.underline-text {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
 
 .mark-text {
   background-color: var(--logo-gray-bg);
-}
-
-.underline-text {
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
 }
 
 .italic-text {
@@ -139,26 +145,26 @@ body.page-docs::before {
   position: relative;
   padding-inline-start: 1.5rem;
   font-weight: 700;
-  font-size: 28px;
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.75rem);
   line-height: 1.71429;
   color: var(--dark-color);
 }
 
-.strong-concept:before {
+.strong-concept::before {
   content: '+';
   position: absolute;
+  inset-block: 0; 
+  margin-block: auto;
   inset-inline-start: 0;
-  inset-inline-start: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  block-size: fit-content;
   font-weight: 700;
 }
 
-/* HEADER */
+/* ----- HEADER ----- */
 
 .site-header {
   position: sticky;
-  inset: 0;
+  inset-block-start: 0;
   z-index: 1000;
   inline-size: 100%;
   display: flex;
@@ -168,103 +174,116 @@ body.page-docs::before {
 }
 
 .site-header .container {
-  block-size: 54px;
+  block-size: var(--header-height);
+  display: flex;
+  align-items: center;
 }
 
 .site-nav {
+  inline-size: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50px;
+  gap: clamp(20px, 4vw, 50px);
 }
 
 .site-nav__wrapper {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 50px;
+  gap: clamp(15px, 3vw, 50px);
 }
 
 .lang-switcher {
   font-family: var(--font-switch);
   font-weight: 600;
-  font-size: 22px;
   font-size: clamp(1rem, 1vw + 0.8rem, 1.375rem);
   letter-spacing: 0.04em;
-  font-style: normal;
-  text-align: center;
   text-transform: uppercase;
 }
 
 .site-nav__list {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
   gap: 10px;
+  flex-wrap: wrap; 
 }
 
 .site-nav__link {
   font-family: var(--font-ui);
   font-weight: 400;
-  font-size: 22px;
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.375rem); /* ~16px to 22px */
   letter-spacing: 0.03em;
   color: var(--dark-color);
   text-decoration: none;
 }
 
 .site-logo {
-  inline-size: 238px;
-  block-size: 54px;
+  inline-size: clamp(150px, 20vw, 238px);
+  block-size: auto;
 }
 
-/* ------- MAIN CONTENT  ------- */
+/* ----- MAIN CONTENT: DOCS ----- */
 
+/* Default Mobile-First Grid */
 .docs-layout {
   display: grid;
-  grid-template-columns: minmax(280px, var(--container-aside-max-width)) 1fr;
-  justify-content: space-between;
-  gap: 30px;
-  margin-block-start: calc(var(--header-height) + var(--sidebar-offset));
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 4cqi, 30px);
+  margin-block-start: calc(var(--header-height) + clamp(20px, 3vw, var(--sidebar-offset)));
 }
 
-/* SIDEBAR */
-
-.docs-sidebar {
-  position: sticky;
-  inset-block-start: calc(var(--header-height) + var(--sidebar-offset));
-  block-size: max-content;
-  inline-size: max-content;
-  padding-inline: 10px;
-  padding-block: 10px;
+/* Container Query applying sidebar ONLY when container has enough space */
+@container (min-width: 768px) {
+  .docs-layout {
+    grid-template-columns: minmax(220px, var(--container-aside-max-width)) 1fr;
+    justify-content: space-between;
+  }
 }
+
+      .docs-sidebar {
+        position: sticky;
+        inset-block-start: calc(var(--header-height));
+        block-size: max-content;
+        padding-inline: 10px;
+        padding-block: 10px;
+        
+        backdrop-filter: blur(.625rem);
+        -webkit-backdrop-filter: blur(.625rem);
+        background-color: rgba(255, 255, 255, 0.85);
+        z-index: 10;
+      }
+
+      @container (min-width: 768px) {
+        .docs-sidebar {
+          inset-block-start: calc(var(--header-height) + var(--sidebar-offset));
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background-color: transparent;
+        }
+      }
 
 .docs-sidebar__list {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
-  gap: 70px;
+  gap: clamp(30px, 5cqi, 70px);
 }
 
 .docs-sidebar__item {
   inline-size: 100%;
   border-block-end: 1px solid #bdbdbd;
+  padding-block-end: 10px;
 }
 
 .docs-content {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
-  gap: 70px;
-  padding-block: 0px 90px;
+  gap: clamp(40px, 8cqi, 70px);
+  padding-block: 0px clamp(40px, 10cqi, 90px);
 }
 
 .docs-section {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   flex-direction: column;
 }
 
@@ -273,13 +292,13 @@ body.page-docs::before {
 }
 
 .docs-section__title {
-  margin-block-end: 40px;
+  margin-block-end: clamp(20px, 4cqi, 40px);
 }
 
 .docs-section__chapter {
   font-family: var(--font-chapter);
   font-weight: 300;
-  font-size: 30px;
+  font-size: clamp(1rem, 2cqi + 0.5rem, 1.875rem); /* ~16px to 30px */
   letter-spacing: 0.04em;
   color: var(--dark-color);
   margin-inline-start: 10px;
@@ -287,49 +306,59 @@ body.page-docs::before {
 }
 
 .docs-section p:not(:first-of-type) {
-  margin-block-start: 40px;
+  margin-block-start: clamp(20px, 4cqi, 40px);
 }
+
+/* ----- MAIN CONTENT: CLIENTS ----- */
 
 .clients-heading {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+  gap: clamp(10px, 2vw, 20px);
   inline-size: max-content;
-  margin-block-end: 40px;
-  margin-block-start: calc(var(--header-height) + var(--sidebar-offset));
+  margin-block-end: clamp(20px, 4vw, 40px);
+  margin-block-start: calc(var(--header-height) + clamp(20px, 3vw, var(--sidebar-offset)));
 }
 
 .clients-section {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   flex-direction: column;
   gap: 30px;
-  border-block-start: 1px solid #bfbfbf;
-  border-block-end: 1px solid #bfbfbf;
-  padding-block: 20px;
-  padding-inline: 0px;
+  border-block: 1px solid #bfbfbf; /* Logical border block */
+  padding-block: clamp(20px, 4cqi, 40px);
 }
 
+/* Container Queries for responsive client grid */
 .clients-section__list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 30px;
+  grid-template-columns: 1fr; /* Mobile fallback */
+  grid-template-rows: auto;
+  gap: clamp(15px, 3cqi, 30px);
   inline-size: 100%;
 }
 
+@container (min-width: 480px) {
+  .clients-section__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (min-width: 800px) {
+  .clients-section__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .clients-section__item {
-  position: relative; 
-  perspective: 3200px; 
-  transform-style: preserve-3d; 
-  
-  inline-size: 270px;
-  block-size: 180px;
+  position: relative;
+  perspective: 3200px;
+  transform-style: preserve-3d;
+
+  inline-size: 100%;
+  block-size: clamp(140px, 20cqi, 180px);
   border-radius: 8px;
-  padding-block: 50px;
-  padding-inline: 30px;
+  padding-block: clamp(30px, 5cqi, 50px);
+  padding-inline: clamp(15px, 3cqi, 30px);
 }
 
 .flip-item__side {
@@ -340,7 +369,7 @@ body.page-docs::before {
 
   backface-visibility: hidden;
   transition: transform 0.6s ease;
-  object-fit: contain; 
+  object-fit: contain;
 }
 
 .flip-item__front {
